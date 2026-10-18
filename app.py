@@ -18,7 +18,7 @@ class ChatRequest(BaseModel):
 
 @app.get("/")
 def home():
-return FileResponse("static/index.html")
+    return FileResponse("static/index.html")
 
 @app.get("/health")
 def health():
