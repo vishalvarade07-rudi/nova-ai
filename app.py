@@ -41,11 +41,9 @@ try:
         model="gemini-2.5-flash",
         contents=request.message,
     )
-
     return {
         "reply": response.text or "I couldn't generate a response."
     }
-
 except Exception:
     raise HTTPException(
         status_code=502,
