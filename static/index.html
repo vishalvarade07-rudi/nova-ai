@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080711">
+
 <title>NOVA AI — Beyond Intelligence</title>
 
 <style>
@@ -12,7 +13,6 @@
 :root {
     --bg: #080711;
     --panel: #100e1c;
-    --panel-light: #171426;
     --purple: #9b5cff;
     --pink: #f05bff;
     --blue: #5b9dff;
@@ -27,8 +27,12 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: Inter, sans-serif;
     background:
         radial-gradient(ellipse at 50% -20%, rgba(108,51,180,.18), transparent 60%),
         var(--bg);
@@ -50,10 +54,10 @@ button {
     max-width: 1100px;
     min-height: 100vh;
     margin: auto;
-    padding: 22px 24px 110px;
+    padding: 22px 24px 115px;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 
 header {
     display: flex;
@@ -77,7 +81,6 @@ header {
     font-size: 23px;
     font-weight: 800;
     background: linear-gradient(135deg, #a66aff, #ed65e9);
-    color: white;
     box-shadow: 0 0 28px rgba(169,92,255,.3);
 }
 
@@ -89,21 +92,27 @@ header {
 
 .brand-sub {
     color: var(--muted);
-    font-size: 10px;
-    letter-spacing: 2.5px;
+    font-size: 9px;
+    letter-spacing: 2px;
     margin-top: 4px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .status {
     display: flex;
     align-items: center;
     gap: 7px;
-    padding: 9px 12px;
+    padding: 9px 11px;
     border: 1px solid var(--border);
     background: rgba(255,255,255,.025);
     border-radius: 30px;
     color: #c5bbd9;
-    font-size: 11px;
+    font-size: 10px;
 }
 
 .status-dot {
@@ -114,7 +123,45 @@ header {
     box-shadow: 0 0 10px #72f6b0;
 }
 
-/* HERO */
+/* ================= PREMIUM MENU BUTTON ================= */
+
+.premium-menu-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 13px;
+    border-radius: 13px;
+    border: 1px solid rgba(93,170,255,.45);
+    background: linear-gradient(135deg,#102c54,#11152f);
+    color: #d7eaff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(42,139,255,.12);
+    transition: .25s;
+}
+
+.premium-menu-btn:hover {
+    box-shadow: 0 0 25px rgba(42,139,255,.4);
+    transform: translateY(-2px);
+}
+
+.menu-gem {
+    color: #71c5ff;
+    font-size: 17px;
+    animation: gemPulse 2s infinite;
+}
+
+.menu-lines {
+    font-size: 15px;
+}
+
+@keyframes gemPulse {
+    0%,100% { text-shadow: 0 0 5px #55b7ff; }
+    50% { text-shadow: 0 0 15px #55b7ff,0 0 25px #267cff; }
+}
+
+/* ================= HERO ================= */
 
 .hero {
     text-align: center;
@@ -163,7 +210,7 @@ header {
     height: 110px;
     border-radius: 50%;
     background:
-        radial-gradient(circle at 30% 25%, #f6d5ff 0%, #b68aff 18%, #7943e8 42%, #30115e 72%, #100820 100%);
+        radial-gradient(circle at 30% 25%,#f6d5ff 0%,#b68aff 18%,#7943e8 42%,#30115e 72%,#100820 100%);
     box-shadow:
         0 0 30px rgba(163,91,255,.7),
         0 0 75px rgba(133,70,255,.35),
@@ -179,7 +226,6 @@ header {
     inset: 17px;
     border-radius: 50%;
     border: 1px solid rgba(255,255,255,.4);
-    filter: blur(1px);
 }
 
 @keyframes spin {
@@ -200,14 +246,14 @@ header {
 }
 
 .hero h1 {
-    font-size: clamp(30px, 6vw, 48px);
+    font-size: clamp(30px,6vw,48px);
     line-height: 1.15;
     letter-spacing: -1.8px;
     margin-bottom: 12px;
 }
 
 .gradient-text {
-    background: linear-gradient(90deg, #b99aff, #f08eff, #8fb9ff);
+    background: linear-gradient(90deg,#b99aff,#f08eff,#8fb9ff);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -216,12 +262,12 @@ header {
 .hero p {
     color: var(--muted);
     font-size: 13px;
-    line-height: 1.7;
+    line-height: 1.8;
     max-width: 430px;
     margin: auto;
 }
 
-/* SECTION */
+/* ================= QUICK ACTIONS ================= */
 
 .section-heading {
     display: flex;
@@ -232,7 +278,6 @@ header {
 
 .section-heading h2 {
     font-size: 14px;
-    font-weight: 700;
 }
 
 .section-heading span {
@@ -240,11 +285,9 @@ header {
     color: var(--muted);
 }
 
-/* QUICK ACTIONS */
-
 .actions {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,1fr);
     gap: 12px;
 }
 
@@ -253,16 +296,15 @@ header {
     min-width: 0;
     padding: 18px 14px;
     border: 1px solid var(--border);
-    background: linear-gradient(145deg, rgba(27,22,44,.95), rgba(13,11,24,.95));
+    background: linear-gradient(145deg,#1b162c,#0d0b18);
     border-radius: 18px;
     color: var(--text);
-    transition: .2s ease;
+    transition: .2s;
 }
 
 .action-card:hover {
     transform: translateY(-3px);
     border-color: rgba(176,112,255,.5);
-    background: var(--panel-light);
 }
 
 .action-icon {
@@ -296,17 +338,18 @@ header {
 .action-card p {
     color: var(--muted);
     font-size: 10px;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
-/* CHAT */
+/* ================= CHAT ================= */
 
 .chat-panel {
     margin-top: 25px;
     border: 1px solid var(--border);
     border-radius: 23px;
-    background: linear-gradient(150deg, rgba(20,17,33,.97), rgba(12,10,21,.97));
+    background: linear-gradient(150deg,#141121,#0c0a15);
     overflow: hidden;
+    scroll-margin-top: 20px;
 }
 
 .chat-top {
@@ -323,7 +366,7 @@ header {
     display: grid;
     place-items: center;
     border-radius: 12px;
-    background: linear-gradient(135deg, #9c61ff, #ed68dc);
+    background: linear-gradient(135deg,#9c61ff,#ed68dc);
     font-weight: 800;
 }
 
@@ -339,7 +382,7 @@ header {
 }
 
 .chat-area {
-    height: 270px;
+    height: 300px;
     overflow-y: auto;
     padding: 20px;
     display: flex;
@@ -364,11 +407,6 @@ header {
     animation: appear .25s ease;
 }
 
-@keyframes appear {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
 .message.user {
     align-self: flex-end;
 }
@@ -384,7 +422,7 @@ header {
 
 .message-bubble {
     font-size: 13px;
-    line-height: 1.65;
+    line-height: 1.7;
     padding: 12px 15px;
     border-radius: 16px;
     white-space: pre-wrap;
@@ -392,7 +430,7 @@ header {
 }
 
 .user .message-bubble {
-    background: linear-gradient(135deg, #7745d4, #9b53dc);
+    background: linear-gradient(135deg,#7745d4,#9b53dc);
     border-bottom-right-radius: 5px;
 }
 
@@ -400,6 +438,11 @@ header {
     background: #1b172a;
     border: 1px solid rgba(255,255,255,.055);
     border-bottom-left-radius: 5px;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .composer {
@@ -440,10 +483,9 @@ header {
     width: 47px;
     border: none;
     border-radius: 14px;
-    background: linear-gradient(135deg, #a367ff, #e35de4);
+    background: linear-gradient(135deg,#a367ff,#e35de4);
     color: white;
     font-size: 20px;
-    box-shadow: 0 5px 20px rgba(154,87,255,.2);
     transition: .2s;
 }
 
@@ -463,14 +505,14 @@ header {
     padding: 0 10px 15px;
 }
 
-/* BOTTOM NAV */
+/* ================= BOTTOM NAV ================= */
 
 .bottom-nav {
     position: fixed;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: min(100%, 650px);
+    width: min(100%,650px);
     padding: 11px 15px calc(11px + env(safe-area-inset-bottom));
     display: flex;
     justify-content: space-around;
@@ -503,43 +545,350 @@ header {
     color: #c7a2ff;
 }
 
-.nav-item.active .nav-icon {
-    filter: drop-shadow(0 0 8px rgba(184,127,255,.65));
+/* ================= PREMIUM OVERLAY ================= */
+
+.premium-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 18px 12px;
+    overflow-y: auto;
+    background: rgba(3,6,18,.88);
+    backdrop-filter: blur(16px);
 }
+
+.premium-overlay.open {
+    display: flex;
+    animation: overlayIn .3s ease;
+}
+
+@keyframes overlayIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.premium-panel {
+    position: relative;
+    width: 100%;
+    max-width: 570px;
+    padding: 30px 23px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 27px;
+    border: 1px solid rgba(90,174,255,.3);
+    background:
+        radial-gradient(ellipse at 50% 0%,rgba(25,105,213,.2),transparent 48%),
+        linear-gradient(160deg,#0c1930,#080b18 70%);
+    box-shadow: 0 0 60px rgba(22,108,255,.15);
+    animation: panelIn .4s ease;
+}
+
+.premium-panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg,transparent,#7bd3ff,transparent);
+    animation: blueScan 4s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes blueScan {
+    to { left: 150%; }
+}
+
+@keyframes panelIn {
+    from { opacity: 0; transform: translateY(20px) scale(.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.close-premium {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 12px;
+    color: #d7eaff;
+    border: 1px solid rgba(105,174,255,.25);
+    background: #13223a;
+    font-size: 15px;
+}
+
+.premium-badge {
+    text-align: center;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #73c6ff;
+    margin: 5px 0 18px;
+}
+
+/* ================= HEART ANIMATION ================= */
+
+.love-animation {
+    position: relative;
+    width: 125px;
+    height: 105px;
+    margin: 0 auto 12px;
+    display: grid;
+    place-items: center;
+}
+
+.heart-glow {
+    position: absolute;
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    background: rgba(40,119,255,.18);
+    filter: blur(20px);
+    animation: heartGlow 1.8s infinite alternate;
+}
+
+.heart {
+    position: relative;
+    color: #ff6bba;
+    font-size: 76px;
+    line-height: 1;
+    text-shadow: 0 0 15px rgba(255,82,178,.8);
+    animation: heartbeat 1.2s infinite;
+}
+
+.heart-small {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    font-size: 23px;
+    color: #80caff;
+    animation: tinyFloat 2s infinite ease-in-out;
+}
+
+@keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    15% { transform: scale(1.16); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.1); }
+}
+
+@keyframes heartGlow {
+    from { opacity: .5; transform: scale(.8); }
+    to { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes tinyFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.love-title {
+    text-align: center;
+    font-size: clamp(27px,6vw,36px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(90deg,#e7f5ff,#76c5ff,#f59bdf);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.love-title span {
+    color: #ff73bd;
+    -webkit-text-fill-color: #ff73bd;
+}
+
+.love-subtitle {
+    text-align: center;
+    color: #94a8c7;
+    font-size: 11px;
+    line-height: 1.7;
+    margin-top: 9px;
+}
+
+.premium-divider {
+    width: 100%;
+    height: 1px;
+    margin: 25px 0;
+    background: linear-gradient(90deg,transparent,rgba(89,172,255,.45),transparent);
+}
+
+/* ================= FRIENDSHIP ABOUT ================= */
+
+.about-friendship {
+    padding: 22px 18px;
+    border-radius: 19px;
+    border: 1px solid rgba(83,156,255,.17);
+    background: linear-gradient(140deg,rgba(20,55,100,.25),rgba(13,22,43,.45));
+    text-align: center;
+}
+
+.about-icon {
+    font-size: 29px;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 12px rgba(68,163,255,.5));
+}
+
+.about-friendship h3 {
+    font-size: 19px;
+    color: #b8dcff;
+    margin-bottom: 16px;
+}
+
+.about-friendship p {
+    color: #a6b5ce;
+    font-size: 12px;
+    line-height: 1.9;
+    margin-bottom: 13px;
+}
+
+.friendship-quote {
+    margin-top: 19px;
+    padding: 14px 10px;
+    border-top: 1px solid rgba(94,165,255,.2);
+    color: #7ecbff;
+    font-size: 12px;
+    font-style: italic;
+}
+
+/* ================= TEAM ================= */
+
+.team-heading {
+    text-align: center;
+    color: #7ec6ff;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    margin-bottom: 17px;
+}
+
+.team-card {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 11px;
+    padding: 14px;
+    border: 1px solid rgba(96,151,225,.15);
+    border-radius: 17px;
+    background: linear-gradient(110deg,rgba(21,37,64,.8),rgba(12,17,33,.8));
+    transition: .25s ease;
+}
+
+.team-card:hover {
+    border-color: rgba(102,190,255,.5);
+    transform: translateX(3px);
+    box-shadow: 0 0 20px rgba(45,132,255,.08);
+}
+
+.team-avatar {
+    flex-shrink: 0;
+    width: 45px;
+    height: 45px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    font-size: 22px;
+    background: linear-gradient(135deg,#1c4575,#15213e);
+    border: 1px solid rgba(115,190,255,.18);
+}
+
+.team-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.team-role {
+    color: #70baff;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+}
+
+.team-info h4 {
+    color: #edf6ff;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.team-info h4 span {
+    color: #9eabc2;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.team-info p {
+    color: #8595b0;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.team-symbol {
+    color: #64baff;
+    font-size: 16px;
+    opacity: .7;
+}
+
+.premium-footer {
+    text-align: center;
+    margin-top: 28px;
+}
+
+.footer-stars {
+    color: #71c5ff;
+    letter-spacing: 8px;
+    margin-bottom: 12px;
+}
+
+.premium-footer p {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #b4d9ff;
+}
+
+.premium-footer span {
+    display: block;
+    color: #627d9f;
+    font-size: 8px;
+    letter-spacing: 2px;
+    margin-top: 9px;
+}
+
+/* ================= TOAST ================= */
 
 .toast {
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background: #21192e;
-    border: 1px solid rgba(185,140,255,.3);
+    background: #152744;
+    border: 1px solid rgba(105,174,255,.3);
     color: white;
     padding: 12px 17px;
     border-radius: 12px;
     font-size: 12px;
-    z-index: 30;
+    z-index: 2000;
     display: none;
     max-width: 90%;
     text-align: center;
 }
 
-@media (max-width: 650px) {
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 750px) {
     .app {
-        padding: 17px 15px 105px;
+        padding: 17px 15px 110px;
     }
 
-    .brand-name {
-        font-size: 18px;
+    .actions {
+        grid-template-columns: repeat(2,1fr);
+        gap: 10px;
     }
 
-    .logo {
-        width: 39px;
-        height: 39px;
-    }
-
-    .hero {
-        padding-top: 23px;
+    .action-card {
+        padding: 15px;
     }
 
     .orb-wrap {
@@ -548,22 +897,34 @@ header {
         margin-bottom: 7px;
     }
 
+    .hero {
+        padding-top: 23px;
+    }
+
     .hero h1 {
         font-size: 33px;
     }
 
     .hero p {
         font-size: 12px;
-        max-width: 320px;
     }
 
-    .actions {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+    .brand-name {
+        font-size: 17px;
     }
 
-    .action-card {
-        padding: 15px;
+    .brand-sub {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .logo {
+        width: 38px;
+        height: 38px;
+    }
+
+    .status {
+        display: none;
     }
 
     .chat-area {
@@ -575,14 +936,33 @@ header {
         max-width: 92%;
     }
 
-    .status {
-        font-size: 10px;
-        padding: 8px 10px;
+    .premium-panel {
+        padding: 27px 15px;
+    }
+
+    .team-card {
+        padding: 12px 10px;
+    }
+}
+
+@media (max-width: 360px) {
+    .premium-menu-btn {
+        padding: 9px;
+        gap: 5px;
+        font-size: 8px;
+    }
+
+    .brand {
+        gap: 7px;
+    }
+
+    .brand-name {
+        font-size: 15px;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+    *,*::before,*::after {
         animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
         scroll-behavior: auto !important;
@@ -598,6 +978,8 @@ header {
 
 <div class="app">
 
+    <!-- HEADER -->
+
     <header>
         <div class="brand">
             <div class="logo">N</div>
@@ -607,16 +989,28 @@ header {
             </div>
         </div>
 
-        <div class="status">
-            <span class="status-dot"></span>
-            <span>AI READY</span>
+        <div class="header-right">
+            <div class="status">
+                <span class="status-dot"></span>
+                <span>AI READY</span>
+            </div>
+
+            <button class="premium-menu-btn" id="premiumMenuBtn"
+                    aria-label="Open premium menu" aria-haspopup="dialog"
+                    aria-controls="premiumOverlay">
+                <span class="menu-gem">✦</span>
+                <span>MENU</span>
+                <span class="menu-lines">☰</span>
+            </button>
         </div>
     </header>
+
+    <!-- HOME -->
 
     <main id="homeSection">
 
         <section class="hero">
-            <div class="orb-wrap" aria-label="Animated NOVA AI orb">
+            <div class="orb-wrap" aria-label="NOVA AI animated orb">
                 <div class="orb-ring"></div>
                 <div class="orb-ring ring-two"></div>
                 <div class="orb-core"></div>
@@ -635,254 +1029,9 @@ header {
             </p>
         </section>
 
-        <section>
+        <!-- QUICK ACTIONS -->
+
+        <section id="exploreSection">
             <div class="section-heading">
                 <h2>Explore possibilities</h2>
-                <span>Made for you ✦</span>
-            </div>
-
-            <div class="actions">
-                <button class="action-card" data-prompt="Explain artificial intelligence in simple English with examples.">
-                    <div class="action-icon">✧</div>
-                    <h3>Ask Anything</h3>
-                    <p>Questions, answers and ideas.</p>
-                </button>
-
-                <button class="action-card" data-prompt="Help me write something creative and engaging. Give me a few ideas first.">
-                    <div class="action-icon">✎</div>
-                    <h3>Creative Studio</h3>
-                    <p>Stories, scripts and writing.</p>
-                </button>
-
-                <button class="action-card" data-prompt="Help me solve a coding problem. Explain the solution step by step in simple English.">
-                    <div class="action-icon">⌘</div>
-                    <h3>Code Assistant</h3>
-                    <p>Debug, build and understand code.</p>
-                </button>
-
-                <button class="action-card" data-prompt="Help me create a practical study plan with daily goals and revision time.">
-                    <div class="action-icon">◈</div>
-                    <h3>Study Mode</h3>
-                    <p>Learn smarter, step by step.</p>
-                </button>
-            </div>
-        </section>
-
-    </main>
-
-    <section class="chat-panel" id="chatSection">
-        <div class="chat-top">
-            <div class="mini-logo">N</div>
-            <div>
-                <div class="chat-title">Chat with NOVA</div>
-                <div class="chat-subtitle">Ask anything. Let's explore.</div>
-            </div>
-        </div>
-
-        <div class="chat-area" id="chat" aria-live="polite"></div>
-
-        <form class="composer" id="chatForm">
-            <textarea
-                id="messageInput"
-                rows="1"
-                placeholder="Message NOVA AI..."
-                aria-label="Message NOVA AI"
-                required
-            ></textarea>
-
-            <button class="send-btn" id="sendBtn" type="submit" aria-label="Send message">➤</button>
-        </form>
-
-        <div class="disclaimer">NOVA AI can make mistakes. Verify important information.</div>
-    </section>
-
-</div>
-
-<nav class="bottom-nav" aria-label="Main navigation">
-    <button class="nav-item active" data-target="homeSection">
-        <span class="nav-icon">⌂</span>
-        <span>Home</span>
-    </button>
-
-    <button class="nav-item" data-target="exploreSection">
-        <span class="nav-icon">✧</span>
-        <span>Explore</span>
-    </button>
-
-    <button class="nav-item" data-target="historySection">
-        <span class="nav-icon">◷</span>
-        <span>History</span>
-    </button>
-
-    <button class="nav-item" data-target="profileSection">
-        <span class="nav-icon">◉</span>
-        <span>Profile</span>
-    </button>
-</nav>
-
-<script>
-const chat = document.getElementById("chat");
-const form = document.getElementById("chatForm");
-const input = document.getElementById("messageInput");
-const sendBtn = document.getElementById("sendBtn");
-const toast = document.getElementById("toast");
-
-let isSending = false;
-let toastTimer;
-
-function showToast(message) {
-    toast.textContent = message;
-    toast.style.display = "block";
-
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => {
-        toast.style.display = "none";
-    }, 2800);
-}
-
-function addMessage(text, role) {
-    const wrapper = document.createElement("div");
-    wrapper.className = "message " + role;
-
-    const label = document.createElement("div");
-    label.className = "message-label";
-    label.textContent = role === "user" ? "You" : "NOVA AI";
-
-    const bubble = document.createElement("div");
-    bubble.className = "message-bubble";
-
-    // Use textContent so model responses are not interpreted as HTML.
-    bubble.textContent = text;
-
-    wrapper.appendChild(label);
-    wrapper.appendChild(bubble);
-    chat.appendChild(wrapper);
-
-    chat.scrollTop = chat.scrollHeight;
-    return bubble;
-}
-
-function setSending(value) {
-    isSending = value;
-    sendBtn.disabled = value;
-    sendBtn.textContent = value ? "…" : "➤";
-}
-
-async function sendMessage(message) {
-    if (isSending) return;
-
-    const cleanMessage = message.trim();
-    if (!cleanMessage) return;
-
-    addMessage(cleanMessage, "user");
-    input.value = "";
-    input.style.height = "auto";
-    setSending(true);
-
-    const replyBubble = addMessage("Thinking...", "ai");
-
-    try {
-        // Existing backend API contract is preserved.
-        const response = await fetch("/chat", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                message: cleanMessage
-            })
-        });
-
-        const data = await response.json().catch(() => ({}));
-
-        if (!response.ok) {
-            throw new Error(
-                data.detail || data.error || `Server error (${response.status})`
-            );
-        }
-
-        if (typeof data.reply !== "string") {
-            throw new Error("The server response did not contain a valid reply.");
-        }
-
-        replyBubble.textContent = data.reply;
-
-    } catch (error) {
-        console.error("NOVA AI error:", error);
-
-        replyBubble.textContent =
-            "Sorry, I couldn't connect right now. Please try again.\n\n" +
-            "Error: " + error.message;
-
-    } finally {
-        setSending(false);
-        input.focus();
-        chat.scrollTop = chat.scrollHeight;
-    }
-}
-
-form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    await sendMessage(input.value);
-});
-
-input.addEventListener("input", () => {
-    input.style.height = "auto";
-    input.style.height = Math.min(input.scrollHeight, 120) + "px";
-});
-
-input.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" && !event.shiftKey) {
-        event.preventDefault();
-        form.requestSubmit();
-    }
-});
-
-// Quick-action cards send ready-made prompts to the same backend.
-document.querySelectorAll(".action-card").forEach((button) => {
-    button.addEventListener("click", () => {
-        const prompt = button.dataset.prompt;
-        document.getElementById("chatSection").scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-        input.value = prompt;
-        input.focus();
-        input.style.height = "auto";
-        input.style.height = Math.min(input.scrollHeight, 120) + "px";
-    });
-});
-
-// Bottom navigation: Home and Explore work; History and Profile
-// show a notice because their features have not been implemented yet.
-document.querySelectorAll(".nav-item").forEach((button) => {
-    button.addEventListener("click", () => {
-        document.querySelectorAll(".nav-item").forEach((item) => {
-            item.classList.remove("active");
-        });
-
-        button.classList.add("active");
-
-        const target = button.dataset.target;
-
-        if (target === "homeSection") {
-            document.getElementById("homeSection").scrollIntoView({
-                behavior: "smooth"
-            });
-        } else if (target === "exploreSection") {
-            document.querySelector(".actions").scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
-        } else if (target === "historySection") {
-            showToast("Chat history feature is coming soon.");
-        } else if (target === "profileSection") {
-            showToast("Profile and login will be added later.");
-        }
-    });
-});
-</script>
-
-</body>
-</html>
+ 
