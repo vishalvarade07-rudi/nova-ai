@@ -8,16 +8,13 @@ from google import genai
 
 app = FastAPI(title="NOVA AI")
 
-app.mount(
-"/static",
-StaticFiles(directory="static"),
-name="static",
-)
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 api_key = os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=api_key) if api_key else None
 
-class ChatRequest(BaseModel):message:str=Field(min_length=1,max_length=4000)
+class ChatRequest(BaseModel):
+message: str = Field(min_length=1, max_length=4000)
 
 @app.get("/")
 def home():
@@ -32,7 +29,7 @@ def chat(request: ChatRequest):
 if client is None:
 raise HTTPException(
 status_code=503,
-detail="NOVA AI is not configured yet.",
+detail="NOVA AI is not configured yet. Set GEMINI_API_KEY in Render.",
 )
 
 try:
@@ -40,9 +37,11 @@ try:
         model="gemini-2.5-flash",
         contents=request.message,
     )
+
     return {
         "reply": response.text or "I couldn't generate a response."
     }
+
 except Exception:
     raise HTTPException(
         status_code=502,
