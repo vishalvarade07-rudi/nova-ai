@@ -3,566 +3,364 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080711">
-
-<title>NOVA AI — Beyond Intelligence</title>
+<title>NOVA AI</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
-:root {
-    --bg: #080711;
-    --panel: #100e1c;
-    --purple: #9b5cff;
-    --pink: #f05bff;
-    --blue: #5b9dff;
-    --text: #f7f4ff;
-    --muted: #88839f;
-    --border: rgba(255,255,255,.08);
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+:root {
+    --bg: #050816;
+    --panel: #0d1328;
+    --blue: #38bdf8;
+    --purple: #8b5cf6;
+    --text: #f8fafc;
+    --muted: #94a3b8;
 }
 
 body {
-    font-family: Inter, sans-serif;
-    background:
-        radial-gradient(ellipse at 50% -20%, rgba(108,51,180,.18), transparent 60%),
-        var(--bg);
+    font-family: Arial, sans-serif;
+    background: var(--bg);
     color: var(--text);
     min-height: 100vh;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 button, textarea {
-    font: inherit;
-}
-
-button {
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
+    font-family: inherit;
 }
 
 .app {
-    max-width: 1100px;
-    min-height: 100vh;
-    margin: auto;
-    padding: 22px 24px 115px;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 50% 15%, #172554 0%, transparent 45%),
+        var(--bg);
 }
-
-/* ================= HEADER ================= */
 
 header {
+    height: 70px;
+    padding: 0 18px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 12px;
-}
-
-.brand {
-    display: flex;
     align-items: center;
-    gap: 11px;
+    border-bottom: 1px solid #ffffff12;
+    flex-shrink: 0;
+    z-index: 2;
 }
 
 .logo {
-    width: 43px;
-    height: 43px;
-    display: grid;
-    place-items: center;
-    border-radius: 15px;
-    font-size: 23px;
-    font-weight: 800;
-    background: linear-gradient(135deg, #a66aff, #ed65e9);
-    box-shadow: 0 0 28px rgba(169,92,255,.3);
-}
-
-.brand-name {
-    font-size: 21px;
-    font-weight: 800;
+    font-size: 24px;
+    font-weight: 900;
     letter-spacing: 2px;
-}
-
-.brand-sub {
-    color: var(--muted);
-    font-size: 9px;
-    letter-spacing: 2px;
-    margin-top: 4px;
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.status {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    padding: 9px 11px;
-    border: 1px solid var(--border);
-    background: rgba(255,255,255,.025);
-    border-radius: 30px;
-    color: #c5bbd9;
-    font-size: 10px;
-}
-
-.status-dot {
-    width: 7px;
-    height: 7px;
-    background: #72f6b0;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #72f6b0;
-}
-
-/* ================= PREMIUM MENU BUTTON ================= */
-
-.premium-menu-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 13px;
-    border-radius: 13px;
-    border: 1px solid rgba(93,170,255,.45);
-    background: linear-gradient(135deg,#102c54,#11152f);
-    color: #d7eaff;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    box-shadow: 0 0 20px rgba(42,139,255,.12);
-    transition: .25s;
-}
-
-.premium-menu-btn:hover {
-    box-shadow: 0 0 25px rgba(42,139,255,.4);
-    transform: translateY(-2px);
-}
-
-.menu-gem {
-    color: #71c5ff;
-    font-size: 17px;
-    animation: gemPulse 2s infinite;
-}
-
-.menu-lines {
-    font-size: 15px;
-}
-
-@keyframes gemPulse {
-    0%,100% { text-shadow: 0 0 5px #55b7ff; }
-    50% { text-shadow: 0 0 15px #55b7ff,0 0 25px #267cff; }
-}
-
-/* ================= HERO ================= */
-
-.hero {
-    text-align: center;
-    padding: 35px 0 24px;
-}
-
-.orb-wrap {
-    position: relative;
-    width: 190px;
-    height: 190px;
-    margin: 0 auto 20px;
-    display: grid;
-    place-items: center;
-}
-
-.orb-ring {
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    border: 1px solid rgba(173,103,255,.25);
-    border-radius: 50%;
-    animation: spin 12s linear infinite;
-}
-
-.orb-ring::before {
-    content: "";
-    position: absolute;
-    top: 12px;
-    left: 27px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #ef8dff;
-    box-shadow: 0 0 15px #ef8dff;
-}
-
-.orb-ring.ring-two {
-    width: 150px;
-    height: 150px;
-    border-color: rgba(85,159,255,.3);
-    animation: spin 9s linear infinite reverse;
-}
-
-.orb-core {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    background:
-        radial-gradient(circle at 30% 25%,#f6d5ff 0%,#b68aff 18%,#7943e8 42%,#30115e 72%,#100820 100%);
-    box-shadow:
-        0 0 30px rgba(163,91,255,.7),
-        0 0 75px rgba(133,70,255,.35),
-        inset -10px -12px 25px rgba(0,0,0,.6),
-        inset 5px 5px 15px rgba(255,255,255,.4);
-    animation: float 4s ease-in-out infinite;
-    position: relative;
-}
-
-.orb-core::after {
-    content: "";
-    position: absolute;
-    inset: 17px;
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,.4);
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-@keyframes float {
-    0%,100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-8px) scale(1.04); }
-}
-
-.eyebrow {
-    color: #c59bff;
-    font-size: 10px;
-    letter-spacing: 3px;
-    font-weight: 700;
-    margin-bottom: 12px;
-}
-
-.hero h1 {
-    font-size: clamp(30px,6vw,48px);
-    line-height: 1.15;
-    letter-spacing: -1.8px;
-    margin-bottom: 12px;
-}
-
-.gradient-text {
-    background: linear-gradient(90deg,#b99aff,#f08eff,#8fb9ff);
+    background: linear-gradient(90deg, #38bdf8, #a78bfa);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-.hero p {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.8;
-    max-width: 430px;
-    margin: auto;
+.logo small {
+    display: block;
+    font-size: 9px;
+    color: #94a3b8;
+    letter-spacing: 4px;
+    margin-top: 3px;
 }
 
-/* ================= QUICK ACTIONS ================= */
-
-.section-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 24px 0 15px;
-}
-
-.section-heading h2 {
-    font-size: 14px;
-}
-
-.section-heading span {
-    font-size: 11px;
-    color: var(--muted);
-}
-
-.actions {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 12px;
-}
-
-.action-card {
-    text-align: left;
-    min-width: 0;
-    padding: 18px 14px;
-    border: 1px solid var(--border);
-    background: linear-gradient(145deg,#1b162c,#0d0b18);
-    border-radius: 18px;
-    color: var(--text);
-    transition: .2s;
-}
-
-.action-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(176,112,255,.5);
-}
-
-.action-icon {
-    width: 39px;
-    height: 39px;
-    display: grid;
-    place-items: center;
+.menu-btn {
+    padding: 11px 15px;
+    border: 1px solid #38bdf855;
+    background: #0c1c35;
+    color: #7dd3fc;
     border-radius: 12px;
-    font-size: 19px;
-    margin-bottom: 15px;
-    background: rgba(164,100,255,.14);
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 0 18px #38bdf814;
 }
 
-.action-card:nth-child(2) .action-icon {
-    background: rgba(76,160,255,.14);
-}
-
-.action-card:nth-child(3) .action-icon {
-    background: rgba(244,91,220,.13);
-}
-
-.action-card:nth-child(4) .action-icon {
-    background: rgba(91,242,184,.12);
-}
-
-.action-card h3 {
-    font-size: 12px;
-    margin-bottom: 7px;
-}
-
-.action-card p {
-    color: var(--muted);
-    font-size: 10px;
-    line-height: 1.6;
-}
-
-/* ================= CHAT ================= */
-
-.chat-panel {
-    margin-top: 25px;
-    border: 1px solid var(--border);
-    border-radius: 23px;
-    background: linear-gradient(150deg,#141121,#0c0a15);
-    overflow: hidden;
-    scroll-margin-top: 20px;
-}
-
-.chat-top {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 17px 19px;
-    border-bottom: 1px solid var(--border);
-}
-
-.mini-logo {
-    width: 36px;
-    height: 36px;
-    display: grid;
-    place-items: center;
-    border-radius: 12px;
-    background: linear-gradient(135deg,#9c61ff,#ed68dc);
-    font-weight: 800;
-}
-
-.chat-title {
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.chat-subtitle {
-    color: var(--muted);
-    font-size: 10px;
-    margin-top: 5px;
+.menu-btn:active {
+    transform: scale(.95);
 }
 
 .chat-area {
-    height: 300px;
+    flex: 1;
+    min-height: 0;
     overflow-y: auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    scroll-behavior: smooth;
+    padding: 22px 16px 18px;
+    scrollbar-width: thin;
+    scrollbar-color: #334155 transparent;
 }
 
-.chat-area:empty::before {
-    content: "Your conversation will appear here.";
-    color: #68627c;
+.welcome {
     text-align: center;
-    margin: auto;
-    font-size: 12px;
+    padding: 22px 0 30px;
+}
+
+.orb {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 22px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #e0f2fe, #38bdf8 25%, #6366f1 60%, #111827 80%);
+    box-shadow: 0 0 30px #38bdf855, 0 0 75px #6366f133;
+    animation: floatOrb 4s ease-in-out infinite;
+    position: relative;
+}
+
+.orb::after {
+    content: "";
+    position: absolute;
+    inset: -9px;
+    border: 1px solid #38bdf844;
+    border-radius: 50%;
+    animation: pulseOrb 3s ease-out infinite;
+}
+
+@keyframes floatOrb {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseOrb {
+    0% { transform: scale(.9); opacity: .8; }
+    100% { transform: scale(1.25); opacity: 0; }
+}
+
+.welcome h1 {
+    font-size: clamp(27px, 7vw, 38px);
+    margin-bottom: 10px;
+}
+
+.welcome h1 span {
+    color: var(--blue);
+}
+
+.welcome p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    max-width: 460px;
+    margin: 0 auto;
+}
+
+.quick-btn {
+    background: #0b1224;
+    color: #dbeafe;
+    border: 1px solid #33415588;
+    border-radius: 15px;
+    padding: 15px 10px;
+    text-align: left;
+    cursor: pointer;
+    min-height: 68px;
+    transition: .2s;
+}
+
+.quick-btn:hover {
+    border-color: var(--blue);
+    background: #10203a;
+}
+
+.quick-btn strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.quick-btn span {
+    color: var(--muted);
+    font-size: 11px;
 }
 
 .message {
-    max-width: 85%;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    animation: appear .25s ease;
-}
-
-.message.user {
-    align-self: flex-end;
-}
-
-.message.ai {
-    align-self: flex-start;
-}
-
-.message-label {
-    font-size: 10px;
-    color: var(--muted);
-}
-
-.message-bubble {
-    font-size: 13px;
-    line-height: 1.7;
-    padding: 12px 15px;
-    border-radius: 16px;
+    max-width: 88%;
+    padding: 13px 15px;
+    margin: 12px 0;
+    border-radius: 17px;
+    font-size: 14px;
+    line-height: 1.65;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
 }
 
-.user .message-bubble {
-    background: linear-gradient(135deg,#7745d4,#9b53dc);
+.message.user {
+    margin-left: auto;
+    background: linear-gradient(135deg, #2563eb, #6d28d9);
     border-bottom-right-radius: 5px;
 }
 
-.ai .message-bubble {
-    background: #1b172a;
-    border: 1px solid rgba(255,255,255,.055);
+.message.ai {
+    margin-right: auto;
+    background: #101a30;
+    border: 1px solid #ffffff12;
     border-bottom-left-radius: 5px;
 }
 
-@keyframes appear {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
+.typing {
+    color: var(--blue);
+    padding: 12px;
+    font-size: 13px;
 }
 
 .composer {
+    flex-shrink: 0;
+    padding: 12px 14px 10px;
+    background: #070b18;
+    border-top: 1px solid #ffffff12;
+    z-index: 2;
+}
+
+.input-box {
     display: flex;
     align-items: flex-end;
     gap: 10px;
-    padding: 14px;
-    border-top: 1px solid var(--border);
-    background: rgba(8,7,17,.65);
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 9px;
+    background: #111a2e;
+    border: 1px solid #334155;
+    border-radius: 18px;
 }
 
-#messageInput {
-    width: 100%;
+#userInput {
+    flex: 1;
+    min-width: 0;
     max-height: 120px;
-    min-height: 45px;
     resize: none;
-    outline: none;
-    border: 1px solid transparent;
-    border-radius: 14px;
-    padding: 13px 14px;
-    background: #171426;
-    color: var(--text);
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-#messageInput:focus {
-    border-color: rgba(167,105,255,.4);
-}
-
-#messageInput::placeholder {
-    color: #79728f;
-}
-
-.send-btn {
-    flex-shrink: 0;
-    height: 45px;
-    width: 47px;
     border: none;
-    border-radius: 14px;
-    background: linear-gradient(135deg,#a367ff,#e35de4);
+    outline: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 9px 5px;
+}
+
+#userInput::placeholder {
+    color: #64748b;
+}
+
+#sendBtn {
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #38bdf8, #6366f1);
     color: white;
     font-size: 20px;
-    transition: .2s;
+    cursor: pointer;
 }
 
-.send-btn:hover {
-    transform: scale(1.04);
-}
-
-.send-btn:disabled {
+#sendBtn:disabled {
     opacity: .5;
-    cursor: wait;
+    cursor: not-allowed;
 }
 
-.disclaimer {
+.footer-note {
     text-align: center;
-    color: #68627c;
+    color: #64748b;
     font-size: 10px;
-    padding: 0 10px 15px;
+    margin-top: 8px;
 }
-
-/* ================= BOTTOM NAV ================= */
 
 .bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(100%,650px);
-    padding: 11px 15px calc(11px + env(safe-area-inset-bottom));
+    height: 65px;
+    flex-shrink: 0;
     display: flex;
     justify-content: space-around;
-    background: rgba(12,10,23,.94);
-    border: 1px solid var(--border);
-    border-bottom: none;
-    border-radius: 22px 22px 0 0;
-    backdrop-filter: blur(20px);
-    z-index: 10;
-}
-
-.nav-item {
-    background: transparent;
-    border: none;
-    color: #77718c;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 5px;
-    min-width: 55px;
-    font-size: 10px;
-    padding: 4px;
+    background: #090e1d;
+    border-top: 1px solid #ffffff12;
+    z-index: 3;
 }
 
-.nav-icon {
-    font-size: 19px;
+.nav-btn {
+    border: none;
+    background: transparent;
+    color: #64748b;
+    cursor: pointer;
+    padding: 8px;
+    font-size: 11px;
+    min-width: 60px;
 }
 
-.nav-item.active {
-    color: #c7a2ff;
+.nav-btn span {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 4px;
 }
 
-/* ================= PREMIUM OVERLAY ================= */
+.nav-btn.active {
+    color: var(--blue);
+}
+
+.toast {
+    position: fixed;
+    bottom: 145px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #172554;
+    color: white;
+    border: 1px solid #38bdf855;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-size: 13px;
+    z-index: 30;
+    display: none;
+    max-width: 90%;
+    text-align: center;
+}
+
+.toast.show {
+    display: block;
+}
+
+@media (max-height: 650px) {
+    .orb {
+        width: 75px;
+        height: 75px;
+        margin-bottom: 14px;
+    }
+
+    .welcome {
+        padding-top: 8px;
+        padding-bottom: 18px;
+    }
+
+    .quick-btn {
+        min-height: 58px;
+        padding: 10px;
+    }
+}
+    /* ===== PREMIUM MENU STYLES ===== */
 
 .premium-overlay {
     position: fixed;
     inset: 0;
-    z-index: 1000;
+    z-index: 20;
     display: none;
+    align-items: center;
     justify-content: center;
-    align-items: flex-start;
-    padding: 18px 12px;
-    overflow-y: auto;
-    background: rgba(3,6,18,.88);
-    backdrop-filter: blur(16px);
+    padding: 18px;
+    background: rgba(2, 6, 23, .88);
+    backdrop-filter: blur(15px);
 }
 
 .premium-overlay.open {
     display: flex;
-    animation: overlayIn .3s ease;
+    animation: overlayIn .25s ease;
 }
 
 @keyframes overlayIn {
@@ -573,465 +371,673 @@ header {
 .premium-panel {
     position: relative;
     width: 100%;
-    max-width: 570px;
-    padding: 30px 23px;
-    margin: auto;
-    overflow: hidden;
-    border-radius: 27px;
-    border: 1px solid rgba(90,174,255,.3);
+    max-width: 430px;
+    max-height: 85dvh;
+    overflow-y: auto;
+    padding: 24px 18px;
+    border: 1px solid #38bdf855;
+    border-radius: 25px;
     background:
-        radial-gradient(ellipse at 50% 0%,rgba(25,105,213,.2),transparent 48%),
-        linear-gradient(160deg,#0c1930,#080b18 70%);
-    box-shadow: 0 0 60px rgba(22,108,255,.15);
-    animation: panelIn .4s ease;
-}
-
-.premium-panel::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 60%;
-    height: 1px;
-    background: linear-gradient(90deg,transparent,#7bd3ff,transparent);
-    animation: blueScan 4s linear infinite;
-    pointer-events: none;
-}
-
-@keyframes blueScan {
-    to { left: 150%; }
+        radial-gradient(ellipse at top, #172554 0%, transparent 65%),
+        #080e1e;
+    box-shadow: 0 0 45px #2563eb22;
+    animation: panelIn .35s ease;
+    scrollbar-width: thin;
+    scrollbar-color: #334155 transparent;
 }
 
 @keyframes panelIn {
-    from { opacity: 0; transform: translateY(20px) scale(.97); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
-.close-premium {
+.close-menu {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 35px;
-    height: 35px;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #38bdf844;
     border-radius: 12px;
-    color: #d7eaff;
-    border: 1px solid rgba(105,174,255,.25);
-    background: #13223a;
-    font-size: 15px;
+    background: #101a30;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
 }
 
-.premium-badge {
+.menu-heading {
     text-align: center;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    color: #73c6ff;
-    margin: 5px 0 18px;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: #7dd3fc;
+    margin: 10px 0 5px;
 }
 
-/* ================= HEART ANIMATION ================= */
+.menu-subtitle {
+    text-align: center;
+    color: #94a3b8;
+    font-size: 12px;
+    margin-bottom: 22px;
+}
 
-.love-animation {
+.love-card {
     position: relative;
-    width: 125px;
-    height: 105px;
-    margin: 0 auto 12px;
-    display: grid;
-    place-items: center;
+    overflow: hidden;
+    text-align: center;
+    padding: 23px 12px;
+    margin-bottom: 17px;
+    border-radius: 19px;
+    border: 1px solid #ec489955;
+    background: linear-gradient(135deg, #30112f, #171536, #0c1c35);
 }
 
-.heart-glow {
-    position: absolute;
-    width: 85px;
-    height: 85px;
-    border-radius: 50%;
-    background: rgba(40,119,255,.18);
-    filter: blur(20px);
-    animation: heartGlow 1.8s infinite alternate;
+.love-card h3 {
+    position: relative;
+    z-index: 1;
+    color: #f9a8d4;
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.love-card p {
+    position: relative;
+    z-index: 1;
+    color: #e2e8f0;
+    font-size: 13px;
 }
 
 .heart {
-    position: relative;
-    color: #ff6bba;
-    font-size: 76px;
-    line-height: 1;
-    text-shadow: 0 0 15px rgba(255,82,178,.8);
-    animation: heartbeat 1.2s infinite;
-}
-
-.heart-small {
     position: absolute;
-    top: 0;
-    right: 5px;
-    font-size: 23px;
-    color: #80caff;
-    animation: tinyFloat 2s infinite ease-in-out;
+    bottom: -25px;
+    font-size: 20px;
+    opacity: 0;
+    animation: heartFloat 4s linear infinite;
+    pointer-events: none;
 }
 
-@keyframes heartbeat {
-    0%,100% { transform: scale(1); }
-    15% { transform: scale(1.16); }
-    30% { transform: scale(1); }
-    45% { transform: scale(1.1); }
+.heart:nth-child(1) { left: 8%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 28%; animation-delay: 1s; }
+.heart:nth-child(3) { left: 53%; animation-delay: 2s; }
+.heart:nth-child(4) { left: 78%; animation-delay: .5s; }
+.heart:nth-child(5) { left: 91%; animation-delay: 1.7s; }
+
+@keyframes heartFloat {
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+    }
+    15% { opacity: .85; }
+    100% {
+        transform: translateY(-180px) rotate(25deg);
+        opacity: 0;
+    }
 }
 
-@keyframes heartGlow {
-    from { opacity: .5; transform: scale(.8); }
-    to { opacity: 1; transform: scale(1.2); }
+.section-title {
+    color: #7dd3fc;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin: 22px 0 11px;
 }
 
-@keyframes tinyFloat {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+.about-card {
+    padding: 17px;
+    border-radius: 17px;
+    background: linear-gradient(135deg, #0c2344, #10152d);
+    border: 1px solid #38bdf833;
 }
 
-.love-title {
-    text-align: center;
-    font-size: clamp(27px,6vw,36px);
-    font-weight: 800;
-    letter-spacing: -1px;
-    background: linear-gradient(90deg,#e7f5ff,#76c5ff,#f59bdf);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.love-title span {
-    color: #ff73bd;
-    -webkit-text-fill-color: #ff73bd;
-}
-
-.love-subtitle {
-    text-align: center;
-    color: #94a8c7;
-    font-size: 11px;
-    line-height: 1.7;
-    margin-top: 9px;
-}
-
-.premium-divider {
-    width: 100%;
-    height: 1px;
-    margin: 25px 0;
-    background: linear-gradient(90deg,transparent,rgba(89,172,255,.45),transparent);
-}
-
-/* ================= FRIENDSHIP ABOUT ================= */
-
-.about-friendship {
-    padding: 22px 18px;
-    border-radius: 19px;
-    border: 1px solid rgba(83,156,255,.17);
-    background: linear-gradient(140deg,rgba(20,55,100,.25),rgba(13,22,43,.45));
-    text-align: center;
-}
-
-.about-icon {
-    font-size: 29px;
-    margin-bottom: 10px;
-    filter: drop-shadow(0 0 12px rgba(68,163,255,.5));
-}
-
-.about-friendship h3 {
-    font-size: 19px;
-    color: #b8dcff;
-    margin-bottom: 16px;
-}
-
-.about-friendship p {
-    color: #a6b5ce;
-    font-size: 12px;
-    line-height: 1.9;
-    margin-bottom: 13px;
-}
-
-.friendship-quote {
-    margin-top: 19px;
-    padding: 14px 10px;
-    border-top: 1px solid rgba(94,165,255,.2);
-    color: #7ecbff;
-    font-size: 12px;
-    font-style: italic;
-}
-
-/* ================= TEAM ================= */
-
-.team-heading {
-    text-align: center;
-    color: #7ec6ff;
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    margin-bottom: 17px;
+.about-card p {
+    color: #cbd5e1;
+    font-size: 13px;
+    line-height: 1.8;
 }
 
 .team-card {
     display: flex;
     align-items: center;
     gap: 13px;
-    margin-bottom: 11px;
-    padding: 14px;
-    border: 1px solid rgba(96,151,225,.15);
-    border-radius: 17px;
-    background: linear-gradient(110deg,rgba(21,37,64,.8),rgba(12,17,33,.8));
-    transition: .25s ease;
+    padding: 13px;
+    margin-top: 9px;
+    border-radius: 15px;
+    border: 1px solid #33415588;
+    background: #0d162a;
+    transition: .2s;
 }
 
 .team-card:hover {
-    border-color: rgba(102,190,255,.5);
-    transform: translateX(3px);
-    box-shadow: 0 0 20px rgba(45,132,255,.08);
+    border-color: #38bdf877;
+    transform: translateY(-2px);
 }
 
-.team-avatar {
+.team-icon {
+    width: 43px;
+    height: 43px;
     flex-shrink: 0;
-    width: 45px;
-    height: 45px;
     display: grid;
     place-items: center;
     border-radius: 14px;
-    font-size: 22px;
-    background: linear-gradient(135deg,#1c4575,#15213e);
-    border: 1px solid rgba(115,190,255,.18);
+    font-size: 21px;
+    background: linear-gradient(135deg, #0e7490, #4338ca);
 }
 
-.team-info {
-    min-width: 0;
-    flex: 1;
-}
-
-.team-role {
-    color: #70baff;
-    font-size: 8px;
-    letter-spacing: 1.5px;
-    font-weight: 800;
-}
-
-.team-info h4 {
-    color: #edf6ff;
-    font-size: 14px;
-    margin: 5px 0;
-}
-
-.team-info h4 span {
-    color: #9eabc2;
-    font-size: 11px;
-    font-weight: 500;
-}
-
-.team-info p {
-    color: #8595b0;
-    font-size: 10px;
-    line-height: 1.6;
-}
-
-.team-symbol {
-    color: #64baff;
-    font-size: 16px;
-    opacity: .7;
-}
-
-.premium-footer {
-    text-align: center;
-    margin-top: 28px;
-}
-
-.footer-stars {
-    color: #71c5ff;
-    letter-spacing: 8px;
-    margin-bottom: 12px;
-}
-
-.premium-footer p {
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    color: #b4d9ff;
-}
-
-.premium-footer span {
+.team-info strong {
     display: block;
-    color: #627d9f;
-    font-size: 8px;
-    letter-spacing: 2px;
-    margin-top: 9px;
+    font-size: 14px;
+    color: #f1f5f9;
+    margin-bottom: 4px;
 }
 
-/* ================= TOAST ================= */
+.team-info span {
+    font-size: 11px;
+    color: #94a3b8;
+}
 
-.toast {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #152744;
-    border: 1px solid rgba(105,174,255,.3);
-    color: white;
-    padding: 12px 17px;
-    border-radius: 12px;
-    font-size: 12px;
-    z-index: 2000;
-    display: none;
-    max-width: 90%;
+.menu-bottom {
     text-align: center;
+    color: #64748b;
+    font-size: 10px;
+    margin-top: 22px;
+    letter-spacing: 1px;
 }
 
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 750px) {
-    .app {
-        padding: 17px 15px 110px;
-    }
-
-    .actions {
-        grid-template-columns: repeat(2,1fr);
-        gap: 10px;
-    }
-
-    .action-card {
-        padding: 15px;
-    }
-
-    .orb-wrap {
-        transform: scale(.85);
-        margin-top: -8px;
-        margin-bottom: 7px;
-    }
-
-    .hero {
-        padding-top: 23px;
-    }
-
-    .hero h1 {
-        font-size: 33px;
-    }
-
-    .hero p {
-        font-size: 12px;
-    }
-
-    .brand-name {
-        font-size: 17px;
-    }
-
-    .brand-sub {
-        font-size: 8px;
-        letter-spacing: 1px;
-    }
-
-    .logo {
-        width: 38px;
-        height: 38px;
-    }
-
-    .status {
-        display: none;
-    }
-
-    .chat-area {
-        height: 300px;
-        padding: 14px;
-    }
-
-    .message {
-        max-width: 92%;
-    }
-
-    .premium-panel {
-        padding: 27px 15px;
-    }
-
-    .team-card {
-        padding: 12px 10px;
-    }
-}
-
-@media (max-width: 360px) {
-    .premium-menu-btn {
-        padding: 9px;
-        gap: 5px;
-        font-size: 8px;
-    }
-
-    .brand {
-        gap: 7px;
-    }
-
-    .brand-name {
-        font-size: 15px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *,*::before,*::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-    }
-}
+/* ===== MAIN PAGE STRUCTURE ===== */
 </style>
 </head>
 
 <body>
-
-<div class="toast" id="toast" role="status"></div>
-
 <div class="app">
 
-    <!-- HEADER -->
-
     <header>
-        <div class="brand">
-            <div class="logo">N</div>
-            <div>
-                <div class="brand-name">NOVA AI</div>
-                <div class="brand-sub">BEYOND INTELLIGENCE</div>
-            </div>
+        <div class="logo">
+            NOVA AI
+            <small>YOUR AI COMPANION</small>
         </div>
 
-        <div class="header-right">
-            <div class="status">
-                <span class="status-dot"></span>
-                <span>AI READY</span>
-            </div>
-
-            <button class="premium-menu-btn" id="premiumMenuBtn"
-                    aria-label="Open premium menu" aria-haspopup="dialog"
-                    aria-controls="premiumOverlay">
-                <span class="menu-gem">✦</span>
-                <span>MENU</span>
-                <span class="menu-lines">☰</span>
-            </button>
-        </div>
+        <button class="menu-btn" id="premiumMenuBtn" type="button">
+            ☰ MENU
+        </button>
     </header>
 
-    <!-- HOME -->
+    <main class="chat-area" id="chatArea">
+        <section class="welcome" id="welcomeSection">
+            <div class="orb"></div>
 
-    <main id="homeSection">
-
-        <section class="hero">
-            <div class="orb-wrap" aria-label="NOVA AI animated orb">
-                <div class="orb-ring"></div>
-                <div class="orb-ring ring-two"></div>
-                <div class="orb-core"></div>
-            </div>
-
-            <div class="eyebrow">YOUR INTELLIGENT COMPANION</div>
-
-            <h1>
-                Think beyond.<br>
-                <span class="gradient-text">Create anything.</span>
-            </h1>
+            <h1>Hey, I'm <span>NOVA</span></h1>
 
             <p>
-                Your ideas, questions and imagination — powered by
-                intelligence designed to move you forward.
+                Your ideas. Your questions.<br>
+                One intelligent companion.
             </p>
         </section>
 
-        <!-- QUICK ACTIONS -->
+        <section class="quick-actions" id="quickActions">
+            <button class="quick-btn" type="button"
+                data-prompt="Explain an interesting topic to me">
+                <strong>✦ Explore Ideas</strong>
+                <span>Discover something new</span>
+            </button>
 
-        <section id="exploreSection">
-            <div class="section-heading">
-                <h2>Explore possibilities</h2>
- 
+            <button class="quick-btn" type="button"
+                data-prompt="Help me write something creative">
+                <strong>✎ Creative Writing</strong>
+                <span>Stories and inspiration</span>
+            </button>
+
+            <button class="quick-btn" type="button"
+                data-prompt="Help me solve a difficult problem step by step">
+                <strong>⌘ Solve Problems</strong>
+                <span>Think it through</span>
+            </button>
+
+            <button class="quick-btn" type="button"
+                data-prompt="Teach me a useful new skill">
+                <strong>⚡ Learn Skills</strong>
+                <span>Grow every day</span>
+            </button>
+        </section>
+
+        <div id="messages"></div>
+        <div id="typingIndicator" class="typing" hidden>
+            NOVA is thinking...
+        </div>
+    </main>
+
+    <section class="composer">
+        <div class="input-box">
+            <textarea id="userInput" rows="1"
+                placeholder="Ask NOVA anything..."></textarea>
+
+            <button id="sendBtn" type="button"
+                aria-label="Send message">➤</button>
+        </div>
+
+        <div class="footer-note">
+            NOVA AI · Made with imagination ✦
+        </div>
+    </section>
+
+    <nav class="bottom-nav">
+        <button class="nav-btn active" type="button" data-page="home">
+            <span>⌂</span>Home
+        </button>
+
+        <button class="nav-btn" type="button" data-page="explore">
+            <span>✧</span>Explore
+        </button>
+
+        <button class="nav-btn" type="button" data-page="history">
+            <span>◷</span>History
+        </button>
+
+        <button class="nav-btn" type="button" data-page="profile">
+            <span>♙</span>Profile
+        </button>
+    </nav>
+
+</div>
+
+<!-- PREMIUM MENU PANEL -->
+<div class="premium-overlay" id="premiumOverlay">
+    <div class="premium-panel" id="premiumPanel">
+
+        <button class="close-menu" id="closeMenuBtn"
+            type="button" aria-label="Close menu">×</button>
+
+        <h2 class="menu-heading">NOVA UNIVERSE</h2>
+        <p class="menu-subtitle">A little world of friendship ✦</p>
+
+        <div class="love-card">
+            <span class="heart">❤️</span>
+            <span class="heart">💕</span>
+            <span class="heart">💗</span>
+            <span class="heart">💖</span>
+            <span class="heart">💘</span>
+
+            <h3>Rudi loves Mimi 🥰</h3>
+            <p>A little love, a lot of memories ♥</p>
+        </div>
+
+        <h3 class="section-title">✦ ABOUT OUR FRIENDSHIP</h3>
+
+        <div class="about-card">
+            <p>
+                Friendship isn't about being together every second.
+                It's about understanding each other, sharing laughter,
+                standing together during difficult times, and creating
+                memories that last forever. Different personalities,
+                one bond — that's our little universe. 💙
+            </p>
+        </div>
+
+        <h3 class="section-title">✦ THE TEAM</h3>
+
+        <div class="team-card">
+            <div class="team-icon">👑</div>
+            <div class="team-info">
+                <strong>Rudi (Vishal)</strong>
+                <span>Founder · The Visionary</span>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="team-icon">⚡</div>
+            <div class="team-info">
+                <strong>Parth Poul</strong>
+                <span>Co-founder · The Partner</span>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="team-icon">💙</div>
+            <div class="team-info">
+                <strong>Mimi ♥️</strong>
+                <span>Assistant · Always Here to Help</span>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="team-icon">🤧</div>
+            <div class="team-info">
+                <strong>Mayur</strong>
+                <span>The Chaos Legend</span>
+            </div>
+        </div>
+
+        <div class="menu-bottom">
+            MADE WITH ♥ · NOVA AI
+        </div>
+
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+    <script>
+/* =====================================
+   NOVA AI — MAIN JAVASCRIPT
+===================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Get HTML elements
+    const menuBtn = document.getElementById("premiumMenuBtn");
+    const overlay = document.getElementById("premiumOverlay");
+    const closeBtn = document.getElementById("closeMenuBtn");
+    const panel = document.getElementById("premiumPanel");
+
+    const input = document.getElementById("userInput");
+    const sendBtn = document.getElementById("sendBtn");
+    const messages = document.getElementById("messages");
+    const chatArea = document.getElementById("chatArea");
+    const typing = document.getElementById("typingIndicator");
+
+    const welcome = document.getElementById("welcomeSection");
+    const quickActions = document.getElementById("quickActions");
+    const toast = document.getElementById("toast");
+
+    let isSending = false;
+    let toastTimer;
+
+    /* =====================================
+       PREMIUM MENU
+    ===================================== */
+
+    function openMenu() {
+        overlay.classList.add("open");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeMenu() {
+        overlay.classList.remove("open");
+        document.body.style.overflow = "";
+    }
+
+    menuBtn.addEventListener("click", openMenu);
+    closeBtn.addEventListener("click", closeMenu);
+
+    // Close when clicking outside the panel
+    overlay.addEventListener("click", (event) => {
+        if (event.target === overlay) {
+            closeMenu();
+        }
+    });
+
+    // Close menu with Escape key
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            closeMenu();
+        }
+    });
+
+    /* =====================================
+       TOAST NOTIFICATION
+    ===================================== */
+
+    function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+
+        clearTimeout(toastTimer);
+
+        toastTimer = setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2500);
+    }
+
+    /* =====================================
+       CHAT MESSAGE DISPLAY
+    ===================================== */
+
+    function addMessage(text, sender) {
+        const message = document.createElement("div");
+
+        message.className = "message " + sender;
+
+        // textContent prevents HTML from being executed
+        message.textContent = text;
+
+        messages.appendChild(message);
+
+        chatArea.scrollTop = chatArea.scrollHeight;
+
+        return message;
+    }
+
+    function showChatStarted() {
+        if (welcome) {
+            welcome.style.display = "none";
+        }
+
+        if (quickActions) {
+            quickActions.style.display = "none";
+        }
+    }
+
+    /* =====================================
+       CONNECT TO NOVA AI BACKEND
+    ===================================== */
+
+    async function sendMessage(customMessage = null) {
+
+        if (isSending) {
+            return;
+        }
+
+        const message = (
+            customMessage !== null
+                ? customMessage
+                : input.value
+        ).trim();
+
+        if (!message) {
+            showToast("Bro, pehle kuch type toh karo! 😄");
+            return;
+        }
+
+        showChatStarted();
+
+        addMessage(message, "user");
+
+        input.value = "";
+        input.style.height = "auto";
+
+        isSending = true;
+        sendBtn.disabled = true;
+        typing.hidden = false;
+
+        chatArea.scrollTop = chatArea.scrollHeight;
+
+        try {
+
+            /*
+              IMPORTANT:
+              This uses your existing POST /chat endpoint.
+              Request:  { "message": "Hello" }
+              Response: { "reply": "Hello! How can I help?" }
+            */
+
+            const response = await fetch("/chat", {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+
+                body: JSON.stringify({
+                    message: message
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(
+                    "Server returned HTTP " + response.status
+                );
+            }
+
+            const data = await response.json();
+
+            if (
+                !data ||
+                typeof data.reply !== "string"
+            ) {
+                throw new Error(
+                    "Unexpected response from the server."
+                );
+            }
+
+            addMessage(data.reply, "ai");
+
+        } catch (error) {
+
+            console.error("NOVA AI error:", error);
+
+            addMessage(
+                "Sorry bro! 😅 NOVA se connection nahi ho paaya. " +
+                "Internet, backend server aur /chat endpoint check karo.",
+                "ai"
+            );
+
+        } finally {
+
+            isSending = false;
+            sendBtn.disabled = false;
+            typing.hidden = true;
+
+            input.focus();
+
+            chatArea.scrollTop = chatArea.scrollHeight;
+        }
+    }
+
+    /* =====================================
+       SEND BUTTON
+    ===================================== */
+
+    sendBtn.addEventListener("click", () => {
+        sendMessage();
+    });
+
+    /* =====================================
+       ENTER KEY TO SEND
+    ===================================== */
+
+    input.addEventListener("keydown", (event) => {
+
+        if (
+            event.key === "Enter" &&
+            !event.shiftKey &&
+            !event.isComposing
+        ) {
+            event.preventDefault();
+            sendMessage();
+        }
+
+    });
+
+    /* =====================================
+       AUTO-RESIZE TEXTAREA
+    ===================================== */
+
+    input.addEventListener("input", () => {
+
+        input.style.height = "auto";
+
+        input.style.height =
+            Math.min(input.scrollHeight, 120) + "px";
+
+    });
+
+    /* =====================================
+       QUICK ACTION BUTTONS
+    ===================================== */
+
+    document.querySelectorAll(".quick-btn").forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            const prompt = button.dataset.prompt;
+
+            if (prompt) {
+                sendMessage(prompt);
+            }
+
+        });
+
+    });
+
+    /* =====================================
+       BOTTOM NAVIGATION
+    ===================================== */
+
+    document.querySelectorAll(".nav-btn").forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            const page = button.dataset.page;
+
+            document.querySelectorAll(".nav-btn").forEach((nav) => {
+                nav.classList.remove("active");
+            });
+
+            button.classList.add("active");
+
+            if (page === "home") {
+
+                closeMenu();
+
+                chatArea.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            } else if (page === "explore") {
+
+                closeMenu();
+
+                if (welcome) {
+                    welcome.style.display = "";
+                }
+
+                if (quickActions) {
+                    quickActions.style.display = "";
+                }
+
+                showToast("Explore your ideas with NOVA ✨");
+
+            } else if (page === "history") {
+
+                showToast(
+                    "Chat history feature is coming soon! 🕒"
+                );
+
+            } else if (page === "profile") {
+
+                showToast(
+                    "Your profile feature is coming soon! 👤"
+                );
+
+            }
+
+        });
+
+    });
+
+    /* =====================================
+       INITIALIZATION
+    ===================================== */
+
+    console.log("NOVA AI interface initialized successfully! 🚀");
+
+});
+</script>
+
+</body>
+</html>
+    
