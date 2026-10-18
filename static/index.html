@@ -3,125 +3,886 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOVA AI</title>
+<meta name="theme-color" content="#080711">
+<title>NOVA AI — Beyond Intelligence</title>
+
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;background:#080611;color:#fff;
- font-family:Arial,sans-serif;min-height:100vh;
- display:flex;flex-direction:column;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg: #080711;
+    --panel: #100e1c;
+    --panel-light: #171426;
+    --purple: #9b5cff;
+    --pink: #f05bff;
+    --blue: #5b9dff;
+    --text: #f7f4ff;
+    --muted: #88839f;
+    --border: rgba(255,255,255,.08);
 }
-header{
- padding:20px;text-align:center;
- border-bottom:1px solid #33204e;
- background:#0d0919;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.logo{
- font-size:30px;font-weight:900;letter-spacing:5px;
- color:#c084fc;text-shadow:0 0 18px #8b5cf6;
+
+body {
+    font-family: 'Inter', sans-serif;
+    background:
+        radial-gradient(ellipse at 50% -20%, rgba(108,51,180,.18), transparent 60%),
+        var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
 }
-.subtitle{color:#aaa;font-size:12px;margin-top:6px}
-main{
- width:100%;max-width:850px;margin:auto;
- padding:20px;flex:1;display:flex;flex-direction:column;
+
+button, textarea {
+    font: inherit;
 }
-.welcome{text-align:center;margin:45px 0 25px}
-.welcome h1{
- font-size:30px;
- background:linear-gradient(90deg,#c084fc,#38bdf8);
- color:transparent;background-clip:text;
+
+button {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
-.welcome p{color:#a7a1b8}
-#chat{
- flex:1;min-height:180px;max-height:55vh;overflow:auto;
- display:flex;flex-direction:column;gap:14px;
+
+.app {
+    max-width: 1100px;
+    min-height: 100vh;
+    margin: auto;
+    padding: 22px 24px 110px;
 }
-.msg{
- padding:13px 16px;border-radius:16px;
- line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere;
+
+/* HEADER */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
 }
-.user{align-self:flex-end;background:#38205b;max-width:85%}
-.ai{
- align-self:flex-start;background:#151124;
- border:1px solid #302044;max-width:95%;
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
 }
-.composer{
- display:flex;gap:10px;padding:12px;
- border:1px solid #3d2b58;border-radius:18px;
- background:#100c1d;margin-top:18px;
+
+.logo {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    font-size: 23px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #a66aff, #ed65e9);
+    color: white;
+    box-shadow: 0 0 28px rgba(169,92,255,.3);
 }
-textarea{
- flex:1;resize:none;border:0;outline:0;
- background:transparent;color:white;font-size:16px;
- min-width:0;max-height:120px;
+
+.brand-name {
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 2px;
 }
-button{
- border:0;border-radius:12px;padding:12px 16px;
- background:linear-gradient(135deg,#9333ea,#2563eb);
- color:white;font-weight:bold;cursor:pointer;
+
+.brand-sub {
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    margin-top: 4px;
 }
-button:disabled{opacity:.5}
-.note{text-align:center;color:#777;font-size:11px;margin:10px}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.025);
+    border-radius: 30px;
+    color: #c5bbd9;
+    font-size: 11px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background: #72f6b0;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #72f6b0;
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 35px 0 24px;
+}
+
+.orb-wrap {
+    position: relative;
+    width: 190px;
+    height: 190px;
+    margin: 0 auto 20px;
+    display: grid;
+    place-items: center;
+}
+
+.orb-ring {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border: 1px solid rgba(173,103,255,.25);
+    border-radius: 50%;
+    animation: spin 12s linear infinite;
+}
+
+.orb-ring::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 27px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ef8dff;
+    box-shadow: 0 0 15px #ef8dff;
+}
+
+.orb-ring.ring-two {
+    width: 150px;
+    height: 150px;
+    border-color: rgba(85,159,255,.3);
+    animation: spin 9s linear infinite reverse;
+}
+
+.orb-core {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 30% 25%, #f6d5ff 0%, #b68aff 18%, #7943e8 42%, #30115e 72%, #100820 100%);
+    box-shadow:
+        0 0 30px rgba(163,91,255,.7),
+        0 0 75px rgba(133,70,255,.35),
+        inset -10px -12px 25px rgba(0,0,0,.6),
+        inset 5px 5px 15px rgba(255,255,255,.4);
+    animation: float 4s ease-in-out infinite;
+    position: relative;
+}
+
+.orb-core::after {
+    content: "";
+    position: absolute;
+    inset: 17px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.4);
+    filter: blur(1px);
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.04); }
+}
+
+.eyebrow {
+    color: #c59bff;
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    font-size: clamp(30px, 6vw, 48px);
+    line-height: 1.15;
+    letter-spacing: -1.8px;
+    margin-bottom: 12px;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #b99aff, #f08eff, #8fb9ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+    max-width: 430px;
+    margin: auto;
+}
+
+/* SECTION */
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 24px 0 15px;
+}
+
+.section-heading h2 {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.section-heading span {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+/* QUICK ACTIONS */
+
+.actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.action-card {
+    text-align: left;
+    min-width: 0;
+    padding: 18px 14px;
+    border: 1px solid var(--border);
+    background: linear-gradient(145deg, rgba(27,22,44,.95), rgba(13,11,24,.95));
+    border-radius: 18px;
+    color: var(--text);
+    transition: .2s ease;
+}
+
+.action-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(176,112,255,.5);
+    background: var(--panel-light);
+}
+
+.action-icon {
+    width: 39px;
+    height: 39px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    font-size: 19px;
+    margin-bottom: 15px;
+    background: rgba(164,100,255,.14);
+}
+
+.action-card:nth-child(2) .action-icon {
+    background: rgba(76,160,255,.14);
+}
+
+.action-card:nth-child(3) .action-icon {
+    background: rgba(244,91,220,.13);
+}
+
+.action-card:nth-child(4) .action-icon {
+    background: rgba(91,242,184,.12);
+}
+
+.action-card h3 {
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
+.action-card p {
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+/* CHAT */
+
+.chat-panel {
+    margin-top: 25px;
+    border: 1px solid var(--border);
+    border-radius: 23px;
+    background: linear-gradient(150deg, rgba(20,17,33,.97), rgba(12,10,21,.97));
+    overflow: hidden;
+}
+
+.chat-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 17px 19px;
+    border-bottom: 1px solid var(--border);
+}
+
+.mini-logo {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #9c61ff, #ed68dc);
+    font-weight: 800;
+}
+
+.chat-title {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.chat-subtitle {
+    color: var(--muted);
+    font-size: 10px;
+    margin-top: 5px;
+}
+
+.chat-area {
+    height: 270px;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    scroll-behavior: smooth;
+}
+
+.chat-area:empty::before {
+    content: "Your conversation will appear here.";
+    color: #68627c;
+    text-align: center;
+    margin: auto;
+    font-size: 12px;
+}
+
+.message {
+    max-width: 85%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    animation: appear .25s ease;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.message.user {
+    align-self: flex-end;
+}
+
+.message.ai {
+    align-self: flex-start;
+}
+
+.message-label {
+    font-size: 10px;
+    color: var(--muted);
+}
+
+.message-bubble {
+    font-size: 13px;
+    line-height: 1.65;
+    padding: 12px 15px;
+    border-radius: 16px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.user .message-bubble {
+    background: linear-gradient(135deg, #7745d4, #9b53dc);
+    border-bottom-right-radius: 5px;
+}
+
+.ai .message-bubble {
+    background: #1b172a;
+    border: 1px solid rgba(255,255,255,.055);
+    border-bottom-left-radius: 5px;
+}
+
+.composer {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    padding: 14px;
+    border-top: 1px solid var(--border);
+    background: rgba(8,7,17,.65);
+}
+
+#messageInput {
+    width: 100%;
+    max-height: 120px;
+    min-height: 45px;
+    resize: none;
+    outline: none;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    padding: 13px 14px;
+    background: #171426;
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+#messageInput:focus {
+    border-color: rgba(167,105,255,.4);
+}
+
+#messageInput::placeholder {
+    color: #79728f;
+}
+
+.send-btn {
+    flex-shrink: 0;
+    height: 45px;
+    width: 47px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #a367ff, #e35de4);
+    color: white;
+    font-size: 20px;
+    box-shadow: 0 5px 20px rgba(154,87,255,.2);
+    transition: .2s;
+}
+
+.send-btn:hover {
+    transform: scale(1.04);
+}
+
+.send-btn:disabled {
+    opacity: .5;
+    cursor: wait;
+}
+
+.disclaimer {
+    text-align: center;
+    color: #68627c;
+    font-size: 10px;
+    padding: 0 10px 15px;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(100%, 650px);
+    padding: 11px 15px calc(11px + env(safe-area-inset-bottom));
+    display: flex;
+    justify-content: space-around;
+    background: rgba(12,10,23,.94);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    border-radius: 22px 22px 0 0;
+    backdrop-filter: blur(20px);
+    z-index: 10;
+}
+
+.nav-item {
+    background: transparent;
+    border: none;
+    color: #77718c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    min-width: 55px;
+    font-size: 10px;
+    padding: 4px;
+}
+
+.nav-icon {
+    font-size: 19px;
+}
+
+.nav-item.active {
+    color: #c7a2ff;
+}
+
+.nav-item.active .nav-icon {
+    filter: drop-shadow(0 0 8px rgba(184,127,255,.65));
+}
+
+.toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #21192e;
+    border: 1px solid rgba(185,140,255,.3);
+    color: white;
+    padding: 12px 17px;
+    border-radius: 12px;
+    font-size: 12px;
+    z-index: 30;
+    display: none;
+    max-width: 90%;
+    text-align: center;
+}
+
+@media (max-width: 650px) {
+    .app {
+        padding: 17px 15px 105px;
+    }
+
+    .brand-name {
+        font-size: 18px;
+    }
+
+    .logo {
+        width: 39px;
+        height: 39px;
+    }
+
+    .hero {
+        padding-top: 23px;
+    }
+
+    .orb-wrap {
+        transform: scale(.85);
+        margin-top: -8px;
+        margin-bottom: 7px;
+    }
+
+    .hero h1 {
+        font-size: 33px;
+    }
+
+    .hero p {
+        font-size: 12px;
+        max-width: 320px;
+    }
+
+    .actions {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .action-card {
+        padding: 15px;
+    }
+
+    .chat-area {
+        height: 300px;
+        padding: 14px;
+    }
+
+    .message {
+        max-width: 92%;
+    }
+
+    .status {
+        font-size: 10px;
+        padding: 8px 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
 </style>
 </head>
-<body>
-<header>
- <div class="logo">NOVA AI</div>
- <div class="subtitle">YOUR INTELLIGENT COMPANION</div>
-</header>
-<main>
- <section class="welcome" id="welcome">
-  <h1>Welcome to NOVA</h1>
-  <p>Your ideas. Your universe. One AI.</p>
- </section>
- <section id="chat" aria-live="polite"></section>
- <form class="composer" id="form">
-  <textarea id="message" placeholder="Ask NOVA anything..." rows="1" required></textarea>
-  <button id="send" type="submit">Send ↗</button>
- </form>
- <div class="note">NOVA AI · Preview Edition</div>
-</main>
-<script>
-const form=document.getElementById('form');
-const input=document.getElementById('message');
-const chat=document.getElementById('chat');
-const send=document.getElementById('send');
 
-function bubble(text,who){
- const el=document.createElement('div');
- el.className='msg '+who;
- el.textContent=text;
- chat.appendChild(el);
- chat.scrollTop=chat.scrollHeight;
- return el;
+<body>
+
+<div class="toast" id="toast" role="status"></div>
+
+<div class="app">
+
+    <header>
+        <div class="brand">
+            <div class="logo">N</div>
+            <div>
+                <div class="brand-name">NOVA AI</div>
+                <div class="brand-sub">BEYOND INTELLIGENCE</div>
+            </div>
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            <span>AI READY</span>
+        </div>
+    </header>
+
+    <main id="homeSection">
+
+        <section class="hero">
+            <div class="orb-wrap" aria-label="Animated NOVA AI orb">
+                <div class="orb-ring"></div>
+                <div class="orb-ring ring-two"></div>
+                <div class="orb-core"></div>
+            </div>
+
+            <div class="eyebrow">YOUR INTELLIGENT COMPANION</div>
+
+            <h1>
+                Think beyond.<br>
+                <span class="gradient-text">Create anything.</span>
+            </h1>
+
+            <p>
+                Your ideas, questions and imagination — powered by
+                intelligence designed to move you forward.
+            </p>
+        </section>
+
+        <section>
+            <div class="section-heading">
+                <h2>Explore possibilities</h2>
+                <span>Made for you ✦</span>
+            </div>
+
+            <div class="actions">
+                <button class="action-card" data-prompt="Explain artificial intelligence in simple English with examples.">
+                    <div class="action-icon">✧</div>
+                    <h3>Ask Anything</h3>
+                    <p>Questions, answers and ideas.</p>
+                </button>
+
+                <button class="action-card" data-prompt="Help me write something creative and engaging. Give me a few ideas first.">
+                    <div class="action-icon">✎</div>
+                    <h3>Creative Studio</h3>
+                    <p>Stories, scripts and writing.</p>
+                </button>
+
+                <button class="action-card" data-prompt="Help me solve a coding problem. Explain the solution step by step in simple English.">
+                    <div class="action-icon">⌘</div>
+                    <h3>Code Assistant</h3>
+                    <p>Debug, build and understand code.</p>
+                </button>
+
+                <button class="action-card" data-prompt="Help me create a practical study plan with daily goals and revision time.">
+                    <div class="action-icon">◈</div>
+                    <h3>Study Mode</h3>
+                    <p>Learn smarter, step by step.</p>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <section class="chat-panel" id="chatSection">
+        <div class="chat-top">
+            <div class="mini-logo">N</div>
+            <div>
+                <div class="chat-title">Chat with NOVA</div>
+                <div class="chat-subtitle">Ask anything. Let's explore.</div>
+            </div>
+        </div>
+
+        <div class="chat-area" id="chat" aria-live="polite"></div>
+
+        <form class="composer" id="chatForm">
+            <textarea
+                id="messageInput"
+                rows="1"
+                placeholder="Message NOVA AI..."
+                aria-label="Message NOVA AI"
+                required
+            ></textarea>
+
+            <button class="send-btn" id="sendBtn" type="submit" aria-label="Send message">➤</button>
+        </form>
+
+        <div class="disclaimer">NOVA AI can make mistakes. Verify important information.</div>
+    </section>
+
+</div>
+
+<nav class="bottom-nav" aria-label="Main navigation">
+    <button class="nav-item active" data-target="homeSection">
+        <span class="nav-icon">⌂</span>
+        <span>Home</span>
+    </button>
+
+    <button class="nav-item" data-target="exploreSection">
+        <span class="nav-icon">✧</span>
+        <span>Explore</span>
+    </button>
+
+    <button class="nav-item" data-target="historySection">
+        <span class="nav-icon">◷</span>
+        <span>History</span>
+    </button>
+
+    <button class="nav-item" data-target="profileSection">
+        <span class="nav-icon">◉</span>
+        <span>Profile</span>
+    </button>
+</nav>
+
+<script>
+const chat = document.getElementById("chat");
+const form = document.getElementById("chatForm");
+const input = document.getElementById("messageInput");
+const sendBtn = document.getElementById("sendBtn");
+const toast = document.getElementById("toast");
+
+let isSending = false;
+let toastTimer;
+
+function showToast(message) {
+    toast.textContent = message;
+    toast.style.display = "block";
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+        toast.style.display = "none";
+    }, 2800);
 }
 
-form.addEventListener('submit',async e=>{
- e.preventDefault();
- const message=input.value.trim();
- if(!message||send.disabled)return;
+function addMessage(text, role) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "message " + role;
 
- document.getElementById('welcome').style.display='none';
- bubble(message,'user');
- input.value='';
- send.disabled=true;
- const loading=bubble('NOVA is thinking...','ai');
+    const label = document.createElement("div");
+    label.className = "message-label";
+    label.textContent = role === "user" ? "You" : "NOVA AI";
 
- try{
-  const res=await fetch('/chat',{
-   method:'POST',
-   headers:{'Content-Type':'application/json'},
-   body:JSON.stringify({message})
-  });
-  if(!res.ok)throw new Error('Server error');
-  const data=await res.json();
-  loading.textContent=data.reply||'No response received.';
- }catch(err){
-  loading.textContent='NOVA is not connected yet. Please try again after the backend is deployed.';
- }
- send.disabled=false;
- input.focus();
+    const bubble = document.createElement("div");
+    bubble.className = "message-bubble";
+
+    // Use textContent so model responses are not interpreted as HTML.
+    bubble.textContent = text;
+
+    wrapper.appendChild(label);
+    wrapper.appendChild(bubble);
+    chat.appendChild(wrapper);
+
+    chat.scrollTop = chat.scrollHeight;
+    return bubble;
+}
+
+function setSending(value) {
+    isSending = value;
+    sendBtn.disabled = value;
+    sendBtn.textContent = value ? "…" : "➤";
+}
+
+async function sendMessage(message) {
+    if (isSending) return;
+
+    const cleanMessage = message.trim();
+    if (!cleanMessage) return;
+
+    addMessage(cleanMessage, "user");
+    input.value = "";
+    input.style.height = "auto";
+    setSending(true);
+
+    const replyBubble = addMessage("Thinking...", "ai");
+
+    try {
+        // Existing backend API contract is preserved.
+        const response = await fetch("/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: cleanMessage
+            })
+        });
+
+        const data = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+            throw new Error(
+                data.detail || data.error || `Server error (${response.status})`
+            );
+        }
+
+        if (typeof data.reply !== "string") {
+            throw new Error("The server response did not contain a valid reply.");
+        }
+
+        replyBubble.textContent = data.reply;
+
+    } catch (error) {
+        console.error("NOVA AI error:", error);
+
+        replyBubble.textContent =
+            "Sorry, I couldn't connect right now. Please try again.\n\n" +
+            "Error: " + error.message;
+
+    } finally {
+        setSending(false);
+        input.focus();
+        chat.scrollTop = chat.scrollHeight;
+    }
+}
+
+form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    await sendMessage(input.value);
+});
+
+input.addEventListener("input", () => {
+    input.style.height = "auto";
+    input.style.height = Math.min(input.scrollHeight, 120) + "px";
+});
+
+input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        form.requestSubmit();
+    }
+});
+
+// Quick-action cards send ready-made prompts to the same backend.
+document.querySelectorAll(".action-card").forEach((button) => {
+    button.addEventListener("click", () => {
+        const prompt = button.dataset.prompt;
+        document.getElementById("chatSection").scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+        input.value = prompt;
+        input.focus();
+        input.style.height = "auto";
+        input.style.height = Math.min(input.scrollHeight, 120) + "px";
+    });
+});
+
+// Bottom navigation: Home and Explore work; History and Profile
+// show a notice because their features have not been implemented yet.
+document.querySelectorAll(".nav-item").forEach((button) => {
+    button.addEventListener("click", () => {
+        document.querySelectorAll(".nav-item").forEach((item) => {
+            item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        const target = button.dataset.target;
+
+        if (target === "homeSection") {
+            document.getElementById("homeSection").scrollIntoView({
+                behavior: "smooth"
+            });
+        } else if (target === "exploreSection") {
+            document.querySelector(".actions").scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        } else if (target === "historySection") {
+            showToast("Chat history feature is coming soon.");
+        } else if (target === "profileSection") {
+            showToast("Profile and login will be added later.");
+        }
+    });
 });
 </script>
+
 </body>
 </html>
