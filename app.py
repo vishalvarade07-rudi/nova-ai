@@ -8,6 +8,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from google import genai
 from google.genai import types
+from fastapi.responses import FileResponse
 
 # -----------------------------
 # NOVA AI CONFIGURATION
@@ -104,11 +105,15 @@ IMPORTANT:
 
 @app.get("/")
 async def home():
-    return {
-        "name": "NOVA AI",
-        "status": "online",
-        "message": "NOVA AI backend is running."
-    }
+    index_file = Path(__file__).parent / "static" / "index.html"
+
+    if index_file.is_file():
+        return FileResponse(index_file)
+
+    raise HTTPException(
+        status_code=404,
+        detail="Frontend index.html not found"
+    )
 
 
 @app.get("/health")
