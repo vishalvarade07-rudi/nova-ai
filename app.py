@@ -25,7 +25,7 @@ app.add_middleware(
 API_KEY = os.getenv("GROQ_API_KEY")
 client = Groq(api_key=API_KEY) if API_KEY else None
 
-MODEL_NAME = "llama-3.3-70b-versatile"
+MODEL_NAME = "openai/gpt-oss-120b"
 
 SYSTEM_INSTRUCTION = """
 You are NOVA AI, a friendly and intelligent AI companion.
