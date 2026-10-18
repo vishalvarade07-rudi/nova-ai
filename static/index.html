@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA AI</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#080611;color:#fff;
+ font-family:Arial,sans-serif;min-height:100vh;
+ display:flex;flex-direction:column;
+}
+header{
+ padding:20px;text-align:center;
+ border-bottom:1px solid #33204e;
+ background:#0d0919;
+}
+.logo{
+ font-size:30px;font-weight:900;letter-spacing:5px;
+ color:#c084fc;text-shadow:0 0 18px #8b5cf6;
+}
+.subtitle{color:#aaa;font-size:12px;margin-top:6px}
+main{
+ width:100%;max-width:850px;margin:auto;
+ padding:20px;flex:1;display:flex;flex-direction:column;
+}
+.welcome{text-align:center;margin:45px 0 25px}
+.welcome h1{
+ font-size:30px;
+ background:linear-gradient(90deg,#c084fc,#38bdf8);
+ color:transparent;background-clip:text;
+}
+.welcome p{color:#a7a1b8}
+#chat{
+ flex:1;min-height:180px;max-height:55vh;overflow:auto;
+ display:flex;flex-direction:column;gap:14px;
+}
+.msg{
+ padding:13px 16px;border-radius:16px;
+ line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere;
+}
+.user{align-self:flex-end;background:#38205b;max-width:85%}
+.ai{
+ align-self:flex-start;background:#151124;
+ border:1px solid #302044;max-width:95%;
+}
+.composer{
+ display:flex;gap:10px;padding:12px;
+ border:1px solid #3d2b58;border-radius:18px;
+ background:#100c1d;margin-top:18px;
+}
+textarea{
+ flex:1;resize:none;border:0;outline:0;
+ background:transparent;color:white;font-size:16px;
+ min-width:0;max-height:120px;
+}
+button{
+ border:0;border-radius:12px;padding:12px 16px;
+ background:linear-gradient(135deg,#9333ea,#2563eb);
+ color:white;font-weight:bold;cursor:pointer;
+}
+button:disabled{opacity:.5}
+.note{text-align:center;color:#777;font-size:11px;margin:10px}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">NOVA AI</div>
+ <div class="subtitle">YOUR INTELLIGENT COMPANION</div>
+</header>
+<main>
+ <section class="welcome" id="welcome">
+  <h1>Welcome to NOVA</h1>
+  <p>Your ideas. Your universe. One AI.</p>
+ </section>
+ <section id="chat" aria-live="polite"></section>
+ <form class="composer" id="form">
+  <textarea id="message" placeholder="Ask NOVA anything..." rows="1" required></textarea>
+  <button id="send" type="submit">Send ↗</button>
+ </form>
+ <div class="note">NOVA AI · Preview Edition</div>
+</main>
+<script>
+const form=document.getElementById('form');
+const input=document.getElementById('message');
+const chat=document.getElementById('chat');
+const send=document.getElementById('send');
+
+function bubble(text,who){
+ const el=document.createElement('div');
+ el.className='msg '+who;
+ el.textContent=text;
+ chat.appendChild(el);
+ chat.scrollTop=chat.scrollHeight;
+ return el;
+}
+
+form.addEventListener('submit',async e=>{
+ e.preventDefault();
+ const message=input.value.trim();
+ if(!message||send.disabled)return;
+
+ document.getElementById('welcome').style.display='none';
+ bubble(message,'user');
+ input.value='';
+ send.disabled=true;
+ const loading=bubble('NOVA is thinking...','ai');
+
+ try{
+  const res=await fetch('/chat',{
+   method:'POST',
+   headers:{'Content-Type':'application/json'},
+   body:JSON.stringify({message})
+  });
+  if(!res.ok)throw new Error('Server error');
+  const data=await res.json();
+  loading.textContent=data.reply||'No response received.';
+ }catch(err){
+  loading.textContent='NOVA is not connected yet. Please try again after the backend is deployed.';
+ }
+ send.disabled=false;
+ input.focus();
+});
+</script>
+</body>
+</html>
