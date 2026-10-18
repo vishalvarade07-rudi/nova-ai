@@ -13,8 +13,8 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 api_key = os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=api_key) if api_key else None
 
-class ChatRequest(BaseModel):
-message: str = Field(min_length=1, max_length=4000)
+class ChatRequest(BaseModel);
+    message: str = Field(min_length=1, max_length=4000) 
 
 @app.get("/")
 def home():
